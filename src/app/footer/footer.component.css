@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.footer-details {
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 50%;
+    color: black;
+    background-color: #f9f9f9;
+}
+
+.footer-details h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.footer-label {
+    font-weight: bold;
+    color: #555;
+    width: 40%;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.footer-value {
+    color: #777;
+    width: 60%;
+    text-align: right;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflow text */
+}

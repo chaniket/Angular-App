@@ -1,0 +1,18 @@
+.classForText {
+    color: black;
+    border-radius: 10px;
+    border: 0px;
+    text-align: center;
+    font-size: large;    
+}
+table {
+    border:2px solid black;
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+ th, td {
+    border:2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }

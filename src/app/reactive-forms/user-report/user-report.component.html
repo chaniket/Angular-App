@@ -1,0 +1,86 @@
+<p>user-report works!</p>
+<!--    @for (alert of alerts; track alert) {
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+    } 
+    <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+-->
+    <table  class="table table-striped" style="width: 20%;">
+        <thead>
+            <tr style="text-align: center;">
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userList;" scope="row">
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.id}}" value="{{user.id}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.name}}" value="{{user.name}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.age}}" value="{{user.age}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.email}}" value="{{user.email}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.phoneNo}}" value="{{user.phoneNo}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.address}}" value="{{user.address}}" disabled/></td>
+                <td><button (click)="updateUser(user)">Update</button>
+                    <button (click)="deleteUser(user)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<div class="d-flex justify-content-between p-2">
+	<ngb-pagination
+		[collectionSize]="collectionSize"
+		[(page)]="page"
+		[pageSize]="pageSize"
+		(pageChange)="refreshCountries()"
+	>
+	</ngb-pagination>
+
+	<select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+		<option [ngValue]="2">2 items per page</option>
+		<option [ngValue]="4">4 items per page</option>
+		<option [ngValue]="6">6 items per page</option>
+	</select> 
+</div>
+<br><br>
+
+<div *ngIf="!showUserDetailsFunction() else elseBlock">
+    <div class="user-details">
+        <h2>User Details</h2>
+        <div class="user-info">
+            <div class="user-field">
+                <span class="user-label">ID:</span>
+                <span class="user-value">{{showUserDetails.id}}</span>
+            </div>
+            <div class="user-field">
+                <span class="user-label">Name:</span>
+                <span class="user-value">{{showUserDetails.name}}</span>
+            </div>
+            <div class="user-field">
+                <span class="user-label">Age:</span>
+                <span class="user-value">{{showUserDetails.age}}</span>
+            </div>
+            <div class="user-field">
+                <span class="user-label">Email:</span>
+                <span class="user-value">{{showUserDetails.email}}</span>
+            </div>
+            <div class="user-field">
+                <span class="user-label">Phone No:</span>
+                <span class="user-value">{{showUserDetails.phoneNo}}</span>
+            </div>
+            <div class="user-field">
+                <span class="user-label">Address:</span>
+                <span class="user-value">{{showUserDetails.address}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #elseBlock>
+    No Details
+</ng-template>

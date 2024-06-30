@@ -1,0 +1,13 @@
+<footer [ngClass]="footerDetails(false)">
+    <h2>User Details</h2>
+    <div [ngClass]="footerInfo(true)">
+        <div class="footer-field">
+            <span class="footer-label">Company Name:&emsp;</span>
+            <span class="footer-value">{{showCompnayDetails.companyName}}</span>
+        </div>
+        <div class="footer-filed">
+            <span class="footer-label">Address&emsp;:&emsp;</span>
+            <span class="footer-value">{{showCompnayDetails.address}}</span>
+        </div>
+    </div>
+</footer>

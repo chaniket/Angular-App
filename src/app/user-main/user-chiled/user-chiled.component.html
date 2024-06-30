@@ -1,0 +1,14 @@
+<p>
+    Id: {{userChile.id}} Name : {{userChile.value}}
+</p>
+
+<input type="text" #userValue value="{{userChile.value}}">
+
+<button mat-flat-button (click)="alertValue(userValue.value)"> Send Value</button>
+<br/>
+
+<button (click)="updateEventData.emit(userValue.value)">  Send Karo Value</button>
+<br/>
+<button (click)="onSubmitCustomEvenet(userValue.value)">onSubmit</button>
+<br/>
+<button (click)="actionHandlerB('Hi link')" >Click me! i'm nested output</button>

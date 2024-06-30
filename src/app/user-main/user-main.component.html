@@ -1,0 +1,12 @@
+<p>user-main works!</p>
+
+<div *ngFor="let user of list">
+   {{user.value}}
+    <app-user-chiled [userChile]="user"></app-user-chiled>
+</div>
+<!-- 
+<app-user-chiled (updateEventData)="updateData($event)" > </app-user-chiled>
+-->
+<app-user-chiled (actionB)="actionHandlerA($event)"></app-user-chiled>
+
+<button (click)="updateEventDataApp.emit(userMain)">Batt</button>

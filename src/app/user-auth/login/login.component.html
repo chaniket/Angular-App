@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Store Login</title>
+    
+</head>
+
+<body>
+
+<!-- <button (click)="toggle()">Toggle</button> -->
+<br/>
+<div *ngIf="display">Heading Tag
+    <ol>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+      </ol>
+      
+      <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+      </ul>
+</div>
+
+
+    <div class="login-container">
+        <h2>Medical Store Login</h2>
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm.value)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" #username ngModel
+                (keypress)="userNameEntered(username.value)" value="aniket"
+                required>
+        
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="pass" #password ngModel required>
+            </div>
+            <button>Login</button>
+            <div class="forgot-password">
+                <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

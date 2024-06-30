@@ -1,0 +1,21 @@
+<div class = "alert-custom1">
+<p>add-bootstrap-session works!</p>
+
+<p>
+<ngb-alert [dismissible]="true">
+	<strong>Warning!</strong> Better check yourself, you're not looking too good.
+</ngb-alert>
+</p>
+
+<ngb-alert type="custom" [dismissible]="true"><strong>Whoa!</strong> This is a custom alert.</ngb-alert>
+</div>
+
+<p>
+    <ngb-alert [dismissible]="true">
+        <strong>Warning!</strong> Better check yourself, you're looking too good.
+    </ngb-alert>
+    </p>
+    <div *ngFor="let alert of alerts;tract alert">
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+    </div>
+	<button type="button" class="btn btn-primary" (click)="reset()">Reset</button>

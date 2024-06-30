@@ -1,0 +1,7 @@
+<p>input-output works! {{item}}</p>
+<!-- <button (click)="deleteRequest.emit(item)">Click to send</button> -->
+<button (click)="deleteRequestOne(item)">Click to send1</button>
+
+<input type="text" #userValue value="">
+
+<button (click)="onSubmitCustomEvenet(userValue.value)">onSubmit</button>

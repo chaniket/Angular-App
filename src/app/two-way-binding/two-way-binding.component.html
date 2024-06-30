@@ -1,0 +1,17 @@
+<p>two-way-binding works!</p>
+<p>{{ 20 | usedToInr:100}}</p>
+<!-- <p>{{name | base64ImagPipe}}</p> -->
+
+<input type="text" [(ngModel)]="name" name="user" placeholder="Enter Name"><br>
+<input type="text" #box1 (keyup)="changeDetails(box1.value)"><br>
+<input type="text" #box2 (keyup)="changeDetails1(box1)"><br>
+Name is : {{name | uppercase}}<br>
+Name is : {{name | lowercase}}<br>
+Name is : {{name | slice : 3 :6 | uppercase}}<br>
+Name is : {{name }}<br>
+Date is : {{date | date}}<br>
+<p>{{001112000.3000 |number :'2.2-3'}}</p>
+<p>User {{user | json | titlecase }}</p>
+<p> Currency : {{currency | currency:'INR'}}</p>
+<br>
+<p>{{data}}</p>

@@ -1,0 +1,32 @@
+<div class="" *ngIf="courseWillGoToInput">
+
+    <div class="course-card" [ngClass]="cardClasses()">
+
+        <div class="course-title">
+                <div *ngIf = "courseWillGoToInput.id == 1"> Hey  {{courseWillGoToInput.description}}</div>
+                {{inn+1}}
+                {{courseWillGoToInput.description }} type {{courseWillGoToInput.category}}
+        </div>
+
+        <container-element [ngSwitch]="courseWillGoToInput.category" >
+            <div *ngSwitchCase='"BEGINNER"' > <button>{{courseWillGoToInput.category}}</button></div>
+            <div *ngSwitchCase='"INTERMEDIATE"' > <button>{{courseWillGoToInput.category}}</button></div>
+        </container-element>
+
+        <div *ngIf="isImageAvailable() else NoImageAvailable">
+                <img width="300" alt="Angular Logo"
+                 [src]=[courseWillGoToInput.iconUrl]/>
+            </div>
+        
+            <ng-template #NoImageAvailable>
+            NO Image available Condition working fine
+        </ng-template>  
+
+        <div class="course-description">
+            {{courseWillGoToInput.longDescription}}
+        </div>
+  
+    </div>
+  
+  </div>
+  

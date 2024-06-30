@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.user-details {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 50%;
+    color: black;
+    background-color: #f9f9f9;
+}
+
+.user-details h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.user-label {
+    font-weight: bold;
+    color: #555;
+    width: 40%;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.user-value {
+    color: #777;
+    width: 60%;
+    text-align: right;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflow text */
+}
