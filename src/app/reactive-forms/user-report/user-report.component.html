@@ -1,9 +1,9 @@
-<p>user-report works!</p>
 <!--    @for (alert of alerts; track alert) {
         <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
     } 
     <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
 -->
+<div style="width: 20%;">
     <table  class="table table-striped" style="width: 20%;">
         <thead>
             <tr style="text-align: center;">
@@ -12,24 +12,28 @@
                 <th scope="col">Age</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
-                <th scope="col">Address</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Department</th>
+                <th scope="col">Role</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of userList;" scope="row">
+            <tr *ngFor="let user of userEntity;" scope="row">
                 <td><input type="text" [ngClass]="classForText()"  id="{{user.id}}" value="{{user.id}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.name}}" value="{{user.name}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.firstName}}" value="{{user.firstName}}" disabled/></td>
                 <td><input type="text" [ngClass]="classForText()"  id="{{user.age}}" value="{{user.age}}" disabled/></td>
                 <td><input type="text" [ngClass]="classForText()"  id="{{user.email}}" value="{{user.email}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.phoneNo}}" value="{{user.phoneNo}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.address}}" value="{{user.address}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.mobileNumber}}" value="{{user.mobileNumber}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.dob}}" value="{{user.dob}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.deptId?.name}}" value="{{user.deptId?.name}}" disabled/></td>
+                <td><input type="text" [ngClass]="classForText()"  id="{{user.roleId?.name}}" value="{{user.roleId?.name}}" disabled/></td>
                 <td><button (click)="updateUser(user)">Update</button>
                     <button (click)="deleteUser(user)">Delete</button></td>
             </tr>
         </tbody>
     </table>
-
+</div>
 
 <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
@@ -58,7 +62,7 @@
             </div>
             <div class="user-field">
                 <span class="user-label">Name:</span>
-                <span class="user-value">{{showUserDetails.name}}</span>
+                <span class="user-value">{{showUserDetails.firstName}}</span>
             </div>
             <div class="user-field">
                 <span class="user-label">Age:</span>
@@ -70,11 +74,11 @@
             </div>
             <div class="user-field">
                 <span class="user-label">Phone No:</span>
-                <span class="user-value">{{showUserDetails.phoneNo}}</span>
+                <span class="user-value">{{showUserDetails.mobileNumber}}</span>
             </div>
             <div class="user-field">
-                <span class="user-label">Address:</span>
-                <span class="user-value">{{showUserDetails.address}}</span>
+                <span class="user-label">DOB:</span>
+                <span class="user-value">{{showUserDetails.dob}}</span>
             </div>
         </div>
     </div>

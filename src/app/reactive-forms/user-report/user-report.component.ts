@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbAlertModule, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserDetails } from 'src/app/model/user-details';
+import { HttpClientModule } from '@angular/common/http';
+import { UserEntity } from '../reactive-form/user-entity';
+import { MdServiceService } from 'src/app/mdServices/md-service.service';
 
 const UserDetailsList: UserDetails[] = [
   {id:1,name:"XYZ",age:50,email:"xyz@gmail.com",phoneNo:"+91 9503750000",address:"Pune"},
@@ -27,20 +30,28 @@ const UserDetailsList: UserDetails[] = [
     , NgbAlertModule]
 })
 export class UserReportComponent implements OnInit {
-
+  userEntity:UserEntity [] = [{}];
+  userEntityList:UserEntity [] = [{}];
+  
   userList = UserDetailsList;
   page = 1;
   pageSize = 4;
   collectionSize = UserDetailsList.length;
-  showUserDetails: UserDetails = UserDetailsList[0];
+  showUserDetails: UserEntity = {};
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute
+    ,private mdServices:MdServiceService
+  ) {
     this.refreshCountries();
-    console.log(JSON.stringify(this.userList));
+   // console.log("USER LIST "+JSON.stringify(this.userList));
+    this.userEntityList = mdServices.getData();
+    this.userEntity = this.userEntityList;
+    this.collectionSize = this.userEntityList.length;
+    console.log("User Report \n"+JSON.stringify(this.userEntity));
   }
 
   ngOnInit(): void {
-    debugger;
+    //debugger;
     let id = this.route.snapshot.paramMap.get("id");
     let id1:number = 1;
     if(id!=null || id!=undefined){
@@ -48,12 +59,12 @@ export class UserReportComponent implements OnInit {
     }
     console.log(" log " + this.route.snapshot.paramMap.get("id"));
     if (id != null && id != undefined) {
-      this.showUserDetails = this.userList.filter(us=>us.id==id1).map(us=>us)[0];
+      this.showUserDetails = this.userEntity.filter(us=>us.id==id1).map(us=>us)[0];
     }
   }
 
   refreshCountries() {
-    this.userList = UserDetailsList.map((country, i) => ({ id1: i + 1, ...country }))
+    this.userEntity = this.userEntityList.map((country, i) => ({ id1: i + 1, ...country }))
       .slice(
         (this.page - 1) * this.pageSize,
         (this.page - 1) * this.pageSize + this.pageSize,
@@ -62,11 +73,11 @@ export class UserReportComponent implements OnInit {
   showUserDetailsFunction() {
     return this.showUserDetails == null;
   }
-  deleteUser(user: UserDetails) {
+  deleteUser(user: UserEntity) {
     console.log(user);
   }
 
-  updateUser(user: UserDetails) {
+  updateUser(user: UserEntity) {
     debugger;
     this.showUserDetails = user;
     console.log("update user " + user);

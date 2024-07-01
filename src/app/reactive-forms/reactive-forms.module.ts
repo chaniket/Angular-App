@@ -11,7 +11,7 @@ import { UserReportDtlComponent } from './user-report-dtl/user-report-dtl.compon
 import { AboutCompanyComponent } from './about-company/about-company.component';
 import { AboutMeComponent } from './about/about-me/about-me.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule
     ,AppRoutingModule // added App routing our main module
-    ,HttpClientModule,UserReportComponent
+    ,HttpClientModule
+    ,UserReportComponent
   ],
   exports: [ReactiveFormComponent]
 })
