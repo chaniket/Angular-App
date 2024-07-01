@@ -20,14 +20,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of userEntity;" scope="row">
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.id}}" value="{{user.id}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.firstName}}" value="{{user.firstName}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.age}}" value="{{user.age}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.email}}" value="{{user.email}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.mobileNumber}}" value="{{user.mobileNumber}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.dob}}" value="{{user.dob}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.deptId?.name}}" value="{{user.deptId?.name}}" disabled/></td>
-                <td><input type="text" [ngClass]="classForText()"  id="{{user.roleId?.name}}" value="{{user.roleId?.name}}" disabled/></td>
+                <td><span class="userTd">{{user.id}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.id}}" value="{{user.id}}" disabled/></td>
+                <td><span class="userTd">{{user.firstName}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.firstName}}" value="{{user.firstName}}" disabled/></td>
+                <td><span class="userTd">{{user.age}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.age}}" value="{{user.age}}" disabled/></td>
+                <td><span class="userTd">{{user.email}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.email}}" value="{{user.email}}" disabled/></td>
+                <td><span class="userTd">{{user.mobileNumber}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.mobileNumber}}" value="{{user.mobileNumber}}" disabled/></td>
+                <td><span class="userTd">{{user.dob}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.dob}}" value="{{user.dob}}" disabled/></td>
+                <td><span class="userTd">{{user.deptId?.name}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.deptId?.name}}" value="{{user.deptId?.name}}" disabled/></td>
+                <td><span class="userTd">{{user.roleId?.name}}</span><input type="hidden" [ngClass]="classForText()"  id="{{user.roleId?.name}}" value="{{user.roleId?.name}}" disabled/></td>
                 <td><button (click)="updateUser(user)">Update</button>
                     <button (click)="deleteUser(user)">Delete</button></td>
             </tr>

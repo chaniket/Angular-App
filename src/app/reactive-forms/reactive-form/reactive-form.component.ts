@@ -15,12 +15,15 @@ import { MdServiceService } from 'src/app/mdServices/md-service.service';
 })
 export class ReactiveFormComponent {
 
-  headers = new HttpHeaders()
-    .append('Content-Type','application/json')
-    .append('Accept', 'application/json')
-    .append('Access-Control-Allow-Origin', 'http://localhost:8082/')
-    .append('Access-Control-Allow-Credentials', 'true');
-    //.append('GET', 'POST', 'OPTIONS');
+  header = new HttpHeaders()
+    .append('Content-Type', 'application/json');
+    //.append('Accept', 'application/json')
+    //.append('Access-Control-Allow-Origin', ['http://localhost:8082/', 'http://localhost:4200/'])
+    //.append('Access-Control-Allow-Credentials', 'true')
+    //.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    //.append('Accept', '*/*');
+
+  //.append('GET', 'POST', 'OPTIONS');
 
   params = new HttpParams()
     .append('param1', 'some data 1')
@@ -29,26 +32,27 @@ export class ReactiveFormComponent {
   title = 'Reactive Form';
   constructor(private sanitizer: DomSanitizer, private router: ActivatedRoute
     , private http: HttpClient
-    ,private mdServices:MdServiceService
+    , private mdServices: MdServiceService
 
     //, private location: Location
 
   ) { }
 
   signUpForm = new FormGroup({
-    username: new FormControl('aniketchavan75077@gmail.com'),
-    password: new FormControl('Aniket@1')
+    username: new FormControl('aniketchavan7507@gmail.com'),
+    password: new FormControl('Aniket@9112')
   });
 
   loginReq: LoginRequest = {} as LoginRequest;
   passwordEncoded: string = "";
   loginUrl: string = "http://localhost:8082/saga-user-service/okta/login";
+  //loginUrl = "http://localhost:8093/login/loginUser";
   getAllUsers: string = "http://localhost:8082/saga-user-service/users/getAllUsers?page=0&size=10";
-  
-  userEntity:UserEntity [] = [{}];
+
+  userEntity: UserEntity[] = [{}];
 
   onSubmit() {
-    debugger;
+   // debugger;
     console.log(" 1 - " + this.signUpForm.value.username);
     console.log(' reactive  ' + JSON.stringify(this.signUpForm.value));
 
@@ -60,32 +64,33 @@ export class ReactiveFormComponent {
     this.loginReq.password = this.signUpForm.value.password as string;
 
     const body = JSON.stringify(this.loginReq);
-    
-    this.mdServices.getData();
-  /*  this.http.get(this.getAllUsers).subscribe((data) => {
-      console.log("data " + JSON.stringify(data));
-      // Parse the JSON string back to an object
-    const parsedData = JSON.parse(JSON.stringify(data));
-    if ('content' in parsedData) {
-      const content = parsedData.content;
-      this.userEntity = content;
-      console.log('Content:', content);
-    }
-     //this.userEntity = data.content as JSON;
-    }); */
+
+    // this.mdServices.getUserData();
+    /*  this.http.get(this.getAllUsers).subscribe((data) => {
+        console.log("data " + JSON.stringify(data));
+        // Parse the JSON string back to an object
+      const parsedData = JSON.parse(JSON.stringify(data));
+      if ('content' in parsedData) {
+        const content = parsedData.content;
+        this.userEntity = content;
+        console.log('Content:', content);
+      }
+       //this.userEntity = data.content as JSON;
+      }); */
     /*this.http.post(this.loginUrl, this.loginReq).subscribe((data) => {
       console.log("data " + JSON.stringify(data));
     });*/
-
-    this.http.post<any>(this.loginUrl, body
-      , {
-        headers: this.headers,
+    
+    console.log("this.headers " + JSON.stringify(this.header));
+    this.http.post(this.loginUrl, JSON.parse(body)
+      /*, {
+        headers: this.header,
         params: this.params,
-      }
+      } */
     )
-      .subscribe((res) => 
-        console.log("Login res"+res)
-    );
+      .subscribe((res) =>
+        console.log("Login res" + JSON.stringify(res))
+      );
 
     //this.route = this.route.routeConfig?.path='reactive-dashboard';
     //this.route.routeConfig!=null?"":this.route.routeConfig.path='reactive-dashboard';   

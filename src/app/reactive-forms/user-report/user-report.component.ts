@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserEntity } from '../reactive-form/user-entity';
 import { MdServiceService } from 'src/app/mdServices/md-service.service';
 
-const UserDetailsList: UserDetails[] = [
+const UserDetailsListNotInUse: UserDetails[] = [
   {id:1,name:"XYZ",age:50,email:"xyz@gmail.com",phoneNo:"+91 9503750000",address:"Pune"},
   {id:2,name:"ABC",age:45,email:"abc@gmail.com",phoneNo:"+91 9823456789",address:"Mumbai"},
   {id:3,name:"John Doe",age:35,email:"johndoe@example.com",phoneNo:"+91 9123456780",address:"Delhi"},
@@ -33,10 +33,10 @@ export class UserReportComponent implements OnInit {
   userEntity:UserEntity [] = [{}];
   userEntityList:UserEntity [] = [{}];
   
-  userList = UserDetailsList;
+  userList = UserDetailsListNotInUse;
   page = 1;
   pageSize = 4;
-  collectionSize = UserDetailsList.length;
+  collectionSize = UserDetailsListNotInUse.length;
   showUserDetails: UserEntity = {};
 
   constructor(private route: ActivatedRoute
@@ -44,7 +44,7 @@ export class UserReportComponent implements OnInit {
   ) {
     this.refreshCountries();
    // console.log("USER LIST "+JSON.stringify(this.userList));
-    this.userEntityList = mdServices.getData();
+    this.userEntityList = mdServices.getUserData();
     this.userEntity = this.userEntityList;
     this.collectionSize = this.userEntityList.length;
     console.log("User Report \n"+JSON.stringify(this.userEntity));
@@ -69,16 +69,19 @@ export class UserReportComponent implements OnInit {
         (this.page - 1) * this.pageSize,
         (this.page - 1) * this.pageSize + this.pageSize,
       );
-  }
+  
+    }
+    
   showUserDetailsFunction() {
     return this.showUserDetails == null;
   }
+
   deleteUser(user: UserEntity) {
     console.log(user);
   }
 
   updateUser(user: UserEntity) {
-    debugger;
+   //debugger;
     this.showUserDetails = user;
     console.log("update user " + user);
   }
