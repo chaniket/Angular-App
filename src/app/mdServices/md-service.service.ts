@@ -27,14 +27,14 @@ export class MdServiceService {
   
   headers = new HttpHeaders()
   .append('Content-Type','application/json')//if added here  unnecessary headers it will give cors errors
-  .append('Authorization','Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJ0c2w1YUY2NW1qekI3U1VmeW9zVSJ9.eyJpc3MiOiJodHRwczovL2Rldi1kdjJjajg2Yjd5NWQ1bndqLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NjVlYjc2YzEzOWQ5ZjYzMDBiYjQyMGQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvbG9naW4vbG9naW5Vc2VyIiwiaWF0IjoxNzE5ODQ4MDc5LCJleHAiOjE3MTk5MzQ0NzksInNjb3BlIjoiY3JlYXRlOmNsaWVudF9ncmFudHMgZ3JhbnRfdHlwZTpjbGllbnRfY3JlZGVudGlhbHMgcmVhZDpjbGllbnRfZ3JhbnRzIGRlbGV0ZTpjbGllbnRfZ3JhbnRzIHVwZGF0ZTpjbGllbnRfZ3JhbnRzIHJlYWQ6bWVzc2FnZXMgY2xpZW50X2dyYW50cyBwYXNzd29yZCBBUElzLXNwcmluZy1vYXV0aDIgcGVybWlzc2lvbiBBRE1JTiBBRE1JTl9PTkUiLCJndHkiOiJwYXNzd29yZCIsImF6cCI6InV5QmFidlBkZzRBRnV5RjladW41NUU1WjI5NFpwZ3BSIn0.wTye7Id0kj460wEDLHtDOWXAOUhldw5EKGl2XUcIBkgmsKRYl0hnZqbVijpp8D_hwb5RBjdDgziRqW57iAfjH2rdIs8MJRv-jNwG-tsT8GEKnWOKduDjf6VYzSEHH-9pitegiZMLzNMiln7sqAzs1GothJA0OhUQOhnEYJhF51NkugBbMtaXwo8nDfybncrd2WeSjACoirAK7HL1GxdYY5MmRBQ5C689Ax9c3ssQhMT1mOtO1m9eBIni-dj_1-WbW3C-nuAPEEkm_M4jssLXbvqMvyhN2nXQzOy_GZJNSldAsLkdEmNA5zyKRV3zOAOeZFmUsAvHye1psrPj2RQQsg');
+  .append('Authorization','Bearer '+authToken);
 
   //.append('GET', 'POST', 'OPTIONS');
 
 params = new HttpParams()
   .append('param1', 'some data 1')
   .append('param2', 'some data 2');
-
+  authToken = '';
   userEntity:UserEntity [] = [{}];
 
   getUserData() : UserEntity[]{
